@@ -37,6 +37,11 @@
             width: 256,
             height: 256
         });
+        let tokenVisual = document.createElement("div");
+        tokenVisual.className = "text-warning small font-monospace mt-3 text-break px-3";
+        tokenVisual.style.maxWidth = "400px";
+        qrcodeDiv.parentNode.appendChild(tokenVisual);
+
 
         function atualizarToken() {
             fetch(`/api/token/${sessaoId}`)
@@ -44,6 +49,7 @@
                 .then(data => {
                     // Atualiza o desenho do QR Code com a string encriptada recebida do Python
                     qrcode.makeCode(data.token);
+                    tokenVisual.innerText = "Hash atual: " + data.token;
                 })
                 .catch(err => console.error("Erro ao buscar token:", err));
         }
