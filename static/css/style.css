@@ -1,0 +1,6 @@
+/* Limita a largura do card de login e arredonda as bordas */
+.login-card {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 12px;
+}
